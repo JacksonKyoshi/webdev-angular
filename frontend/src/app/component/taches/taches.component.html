@@ -5,37 +5,47 @@
             <button class="btn btn-outline-secondary m-1" (click)="loggout()">Logout</button>
 
         </div>
+
+        <div class="Label">
+            <h1 Indéfinie></h1>
+            <h2 en Cour></h2>
+            <h3 Attente></h3>
+            <h4 termine></h4>
+        </div>
+
         <div class="ajout">
             <div class="d-flex flex-row justify-content-center "> <!--indéfinie-->
-                <input id="inputAjoutTacheIndef" class="saisieInput" type="text" name="tache" placeholder="tache"
-                    [(ngModel)]="newTache.titre">
+                
+                <input id="inputAjoutTacheIndef" class="saisieInput" type="text" name="tacheIndef" placeholder="tache"
+                    [(ngModel)]="newTacheIndef.titre">
 
                 <button id="buttonAjoutTacheIndef" class="btn btn-primary" value="Ajouter"
-                    (click)='ajouter()'>Ajouter</button>
+                    (click)='ajouter(newTacheIndef)'>Ajouter</button>
             </div>
             <div class="d-flex flex-row justify-content-center "><!--en attente-->
-                <input id="inputAjoutTacheAttente" class="saisieInput" type="text" name="tache" placeholder="tache"
-                    [(ngModel)]="newTache.titre">
+                <input id="inputAjoutTacheAttente" class="saisieInput" type="text" name="tacheAttente" placeholder="tache"
+                    [(ngModel)]="newTacheAttente.titre">
 
                 <button id="buttonAjoutTache" class="btn btn-primary" value="Ajouter"
-                    (click)='ajouter()'>Ajouter</button>
+                    (click)='ajouter(newTacheAttente)'>Ajouter</button>
             </div>
             <div class="d-flex flex-row justify-content-center "><!--en cour-->
-                <input id="inputAjoutTacheCour" class="saisieInput" type="text" name="tache" placeholder="tache"
-                    [(ngModel)]="newTache.titre">
+                <input id="inputAjoutTacheCour" class="saisieInput" type="text" name="tacheCour" placeholder="tache"
+                    [(ngModel)]="newTacheCour.titre">
 
                 <button id="buttonAjoutTache" class="btn btn-primary" value="Ajouter"
-                    (click)='ajouter()'>Ajouter</button>
+                    (click)='ajouter(newTacheCour)'>Ajouter</button>
             </div>
             <div class="d-flex flex-row justify-content-center "><!--terminé-->
-                <input id="inputAjoutTacheTermine" class="saisieInput" type="text" name="tache" placeholder="tache"
-                    [(ngModel)]="newTache.titre">
+                <input id="inputAjoutTacheTermine" class="saisieInput" type="text" name="tacheTermine" placeholder="tache"
+                    [(ngModel)]="newTacheTermine.titre">
 
                 <button id="buttonAjoutTache" class="btn btn-primary" value="Ajouter"
-                    (click)='ajouter()'>Ajouter</button>
+                    (click)='ajouter(newTacheTermine)'>Ajouter</button>
             </div>
 
         </div>
+
             <div id="listeTaches" class="">
 
                 <div class="container">

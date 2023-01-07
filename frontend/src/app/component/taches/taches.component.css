@@ -6,7 +6,15 @@
 
 }
 
+.label{
+    display: grid;
+    grid-template-columns: repeat(4, 4fr);
+    grid-template-rows: auto;
+    grid-gap: 5px;
 
+    font-size: large;
+    background-color: brown;
+}
 
 .container {
     display: grid;
