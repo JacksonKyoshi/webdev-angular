@@ -13,7 +13,8 @@ export class TachesComponent implements OnInit {
   taches: Array<Tache> = [];
   newTache: Tache = {
     titre : '',
-    termine : false
+    termine : false,
+    statut:0
   };  
   
   filter:string = 'Tous';
@@ -63,5 +64,10 @@ export class TachesComponent implements OnInit {
 
   change(filter:string) {
     this.filter = filter;
+  }
+  test(var1:any,var2:any)
+  {
+    console.log(var1===var2)
+    return var1===var2
   }
 }
