@@ -6,14 +6,13 @@
 
 }
 
-.label{
+.titre{
     display: grid;
     grid-template-columns: repeat(4, 4fr);
     grid-template-rows: auto;
     grid-gap: 5px;
-
+    margin-left: 5px;
     font-size: large;
-    background-color: brown;
 }
 
 .container {
