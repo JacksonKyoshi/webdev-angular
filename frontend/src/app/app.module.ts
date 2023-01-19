@@ -8,19 +8,24 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './component/login/login.component';
 import { TachesComponent } from './component/taches/taches.component';
 import { FiltreTachePipe } from './pipe/filtre-tache.pipe';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { TachesAfficheComponent } from './taches-affiche/taches-affiche.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     TachesComponent,
-    FiltreTachePipe
+    FiltreTachePipe,
+    TachesAfficheComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    DragDropModule
  ],
   providers: [],
   bootstrap: [AppComponent]

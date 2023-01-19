@@ -6,6 +6,7 @@
 
 }
 
+
 .titre{
     display: grid;
     grid-template-columns: repeat(4, 4fr);
@@ -25,8 +26,6 @@
 
 }
 
-
-
 .indefini {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -40,6 +39,32 @@
     grid-column: 1; 
     grid-row: auto;
 }
+
+.indefCol{
+    grid-column: 1;
+}
+
+.courCol{
+    grid-column: 3;
+}
+
+.attenteCol{
+    grid-column:2;
+}
+
+.termineCol{
+    grid-column:4;
+}
+
+.example-list {
+    border: solid 1px #ccc;
+    min-height: 60px;
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+    display: block;
+  }
+
 
 .attente {
     display: grid;
