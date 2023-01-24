@@ -9,7 +9,8 @@ import { LoginComponent } from './component/login/login.component';
 import { TachesComponent } from './component/taches/taches.component';
 import { FiltreTachePipe } from './pipe/filtre-tache.pipe';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { TachesAfficheComponent } from './taches-affiche/taches-affiche.component';
+import { TachesAfficheComponent } from './component/taches-affiche/taches-affiche.component';
+import { RegisterComponent } from './component/register/register.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { TachesAfficheComponent } from './taches-affiche/taches-affiche.componen
     LoginComponent,
     TachesComponent,
     FiltreTachePipe,
-    TachesAfficheComponent
+    TachesAfficheComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

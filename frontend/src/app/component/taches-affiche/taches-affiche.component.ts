@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Tache } from 'src/app/model/tache';
 import { TachesService } from 'src/app/service/taches.service';
 import { UserService } from 'src/app/service/user.service';
-import { Status } from '../model/status';
+import { Status } from '../../model/status';
 
 
 
