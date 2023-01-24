@@ -3,7 +3,7 @@ const session = require('express-session');
 const MongoClient = require('mongodb').MongoClient;
 const mongodb = require('mongodb');
 const bodyParser = require('body-parser');
-const { tacheGet, tachePost, tacheDelete, tachePut } = require('./tacheController');
+const { tacheGet, tachePost, tacheDelete, tachePut, statusGet, StatusPost, statusDelete } = require('./tacheController');
 const { signin, login, logout, isConnected } = require('./authController');
 const cors = require('cors')
 
@@ -40,10 +40,13 @@ function checkSignIn(req, res, next) {
 
 app.post('/taches', tachePost);
 app.delete('/taches/:id', tacheDelete);
+app.delete('/status/:id', statusDelete);
 app.put('/taches/:id', tachePut);
 app.post('/signin', signin);
 app.post('/login', login);
 app.get('/taches', checkSignIn, tacheGet);
+app.get('/status',statusGet);
+app.post('/status',StatusPost);
 app.get('/logout', logout);
 app.get('/isConnected',isConnected);
 

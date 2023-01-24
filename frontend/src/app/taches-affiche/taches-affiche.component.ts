@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Tache } from 'src/app/model/tache';
 import { TachesService } from 'src/app/service/taches.service';
 import { UserService } from 'src/app/service/user.service';
+import { Status } from '../model/status';
 
 
 
@@ -19,30 +20,33 @@ export class TachesAfficheComponent {
 
   
   taches: Array<Tache> = [];
+
   newTache: Tache = {
     titre : '',
     termine : false,
-    statut:'undefined'
+    statut:''
   };  
 
 
 
   ajouter(tache:any,statu:string) {
-    console.log(tache)
+    
     this.newTache.statut = statu
+    console.log(tache)
       this.tacheService.ajoutTaches(this.newTache).subscribe({
         next: (data) => {
           this.taches.push(data);
         }
       });
+      
   }
+
 
 
   ngOnInit(): void {
     this.tacheService.getTaches().subscribe({
       next: (data:Array<Tache>) => { this.taches = data; }
     });
-
   }  
 
 
@@ -52,7 +56,7 @@ export class TachesAfficheComponent {
         this.taches = this.taches.filter(t => tache._id != t._id);
       }
     });
-
+    
   }
 
   modifier(tache: Tache) {
@@ -62,14 +66,6 @@ export class TachesAfficheComponent {
       }
     });
   }
-
-  test(var1:any,var2:any)
-  {
-
-    return var1===var2
-  }
-
-
 }
 
 

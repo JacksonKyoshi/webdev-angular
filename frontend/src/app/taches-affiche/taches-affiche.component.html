@@ -8,14 +8,17 @@
 
         <button id="buttonAjoutTacheIndef" class="btn btn-primary" value="Ajouter"
             (click)='ajouter(newTache,status)'>Ajouter</button>
+
+        
     </div>
 
 
 
 <div class="" *ngFor="let tache of taches">
-    <div class="d-flex flex-row justify-content-center tache" *ngIf="test(tache.statut,status)">
+    <div class="d-flex flex-row justify-content-center tache" *ngIf="tache.statut == status">
     <input (click)="modifier(tache)" type="checkbox" [(ngModel)]="tache.termine">
     <div [ngClass]="tache.termine? 'text-decoration-line-through' : '' ">{{tache.titre}}</div>
     <button class="btn btn-outline-danger m-1" (click)='supprimer(tache)'>Supprimer</button>
 </div>
 </div>
+
