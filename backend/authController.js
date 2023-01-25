@@ -25,6 +25,45 @@ exports.signin = [
     }
 ]
 
+exports.Register = [
+    async function (req, res, next) {
+        let user = req.body;
+        try {
+            db = await MongoClient.connect(url);
+            let dbo = db.db("taches");
+            await dbo.collection("user").insertOne(user);
+            res.status(200).json(user);
+        } catch (err) {
+            console.log(err);
+            res.status(500).json({ message: err })
+        }
+    }
+];
+
+
+exports.UserGet = [
+    async function (req, res) {
+        try {
+            db = await MongoClient.connect(url);
+            let dbo = db.db("taches");
+            let datas = await dbo.collection("user").find({}).toArray();
+            console.log(datas)
+            res.status(200).json(datas);
+        } catch (err) {
+            console.log(err);
+            res.status(500).json({ message: err })
+        }
+    }
+];
+
+exports.LogUser = [
+
+    async function (req, res) {
+        res.status(200).json(req.session.user)
+    }
+];
+
+
 exports.login = [
     async function (req, res) {
         let user = req.body.login;

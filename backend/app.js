@@ -4,7 +4,7 @@ const MongoClient = require('mongodb').MongoClient;
 const mongodb = require('mongodb');
 const bodyParser = require('body-parser');
 const { tacheGet, tachePost, tacheDelete, tachePut, statusGet, StatusPost, statusDelete } = require('./tacheController');
-const { signin, login, logout, isConnected } = require('./authController');
+const { signin, login, logout, isConnected, Register, UserGet, LogUser } = require('./authController');
 const cors = require('cors')
 
 const url = "mongodb://localhost:27017/";
@@ -47,7 +47,10 @@ app.post('/login', login);
 app.get('/taches', checkSignIn, tacheGet);
 app.get('/status',statusGet);
 app.post('/status',StatusPost);
-app.get('/logout', logout);
+app.post('/user',Register);
+app.get('/user',UserGet);
+app.get('/loguser',LogUser);
+app.post('/logout', logout);
 app.get('/isConnected',isConnected);
 
 

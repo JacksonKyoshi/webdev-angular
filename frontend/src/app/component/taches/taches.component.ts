@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Status } from 'src/app/model/status';
 import { Tache } from 'src/app/model/tache';
 import { TachesService } from 'src/app/service/taches.service';
 import { UserService } from 'src/app/service/user.service';
-
+import {LoginComponent} from 'src/app/component/login/login.component'
+import { User } from 'src/app/model/user';
 
 @Component({
   selector: 'app-taches',
@@ -13,20 +14,23 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class TachesComponent  {
 
+  user:string = '';
+
   statut: Array<Status> = [];
   newStatus:Status = {
-    status:''
+    status:'',
+    user:''
   };
 
 
-  
   
   taches: Array<Tache> = [];
 
   newTache: Tache = {
     titre : '',
     termine : false,
-    statut:'undefined'
+    statut:'undefined',
+    user:''
   };  
 
 
@@ -43,6 +47,10 @@ export class TachesComponent  {
     this.tacheService.getTaches().subscribe({
       next: (data:Array<Tache>) => { this.taches = data; }
     });
+
+    this.userService.LogUser().subscribe({
+      next: (data:string) => { this.user = data; }
+    });
   }
 
 
@@ -53,16 +61,14 @@ export class TachesComponent  {
     let supprimer = (tache:Tache) =>{
         this.tacheService.removeTaches(tache).subscribe({
           next: (data) => {
-            console.log(tache)
             this.taches = this.taches.filter(t => tache._id != t._id);
           }
         });}
 
     this.taches.forEach((task)=>{
-      console.log(task)
-      if(task.statut == List.status)
+      if(task.statut == List.status && task.user == this.user)
       {
-         console.log(supprimer(task)) 
+       supprimer(task)
       }
     })
 
@@ -77,9 +83,7 @@ export class TachesComponent  {
 
 
   addListe(newStatus:string){
-    console.log(this.statut);
-
-    console.log(newStatus)
+    this.newStatus.user=this.user;
       this.tacheService.ajoutStatus(this.newStatus).subscribe({
         next: (data) => {
           this.statut.push(data);
@@ -106,3 +110,4 @@ export class TachesComponent  {
 
 
 }
+

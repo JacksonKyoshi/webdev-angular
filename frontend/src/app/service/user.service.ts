@@ -16,6 +16,20 @@ export class UserService {
     return this.http.post<void>(this.url, user, { withCredentials: true });
   }
 
+  register(user: User): Observable<void>  {
+    return this.http.post<void>('http://localhost:3000/user', user, { withCredentials: true });
+  }
+
+  
+
+  getUser():Observable<Array<User>> {
+    return this.http.get<Array<User>>('http://localhost:3000/user', {withCredentials:true});
+  }
+
+  LogUser():Observable<string> {
+    return this.http.get<string>('http://localhost:3000/loguser', {withCredentials:true});
+  }
+
   logout():Observable<void> {
     return this.http.post<void>('http://localhost:3000/logout', {}, { withCredentials: true });
   }
