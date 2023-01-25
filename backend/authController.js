@@ -63,7 +63,6 @@ exports.LogUser = [
     }
 ];
 
-
 exports.login = [
     async function (req, res) {
         let user = req.body.login;
