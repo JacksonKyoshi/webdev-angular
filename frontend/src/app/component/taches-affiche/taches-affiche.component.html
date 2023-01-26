@@ -1,24 +1,32 @@
+<head>
+    <title>font awesome icons</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<h1 class="bd-highlight d-flex justify-content-center">{{status}}</h1>
+<br/>
+<div class="d-flex flex-row justify-content-center "> <!--indéfinie-->
+
+    <input id="inputAjoutTacheIndef" class="saisieInput" type="text" name="tacheIndef" placeholder="tache"
+        [(ngModel)]="newTache.titre">
+
+    <button id="buttonAjoutTacheIndef" class="btn btn-primary" value="Ajouter"
+        (click)='ajouter(newTache,status)'>Ajouter</button>
+</div>
+<br/>
 
 
-    <p>{{status}}</p>
-    <div class="d-flex flex-row justify-content-center "> <!--indéfinie-->
-        
-        <input id="inputAjoutTacheIndef" class="saisieInput" type="text" name="tacheIndef" placeholder="tache"
-            [(ngModel)]="newTache.titre">
 
-        <button id="buttonAjoutTacheIndef" class="btn btn-primary" value="Ajouter"
-            (click)='ajouter(newTache,status)'>Ajouter</button>
+<div *ngFor="let tache of taches">
+    <div cdkDropList [cdkDropListData]="taches" (cdkDropListDropped)="drop($event)">
+        <div class="d-flex flex-row justify-content-center tache"
+            *ngIf="tache.statut == status && tache.user == this.user" cdkDrag>
+            <input (click)="modifier(tache)" type="checkbox" [(ngModel)]="tache.termine">
+            <div [ngClass]="tache.termine? 'text-decoration-line-through' : '' ">{{tache.titre}}</div>
+            <button class="btn btn-outline-danger m-1" (click)='supprimer(tache)'>Supprimer</button>
+            <button class="btn btn-outline-success m-1" (click)='up(tache)'><i class="fa fa-arrow-up"></i></button>
+            <button class="btn btn-outline-success m-1" (click)='down(tache)'><i class="fa fa-arrow-down"></i></button>
 
-        
+        </div>
     </div>
-
-
-
-<div class="" *ngFor="let tache of taches">
-    <div class="d-flex flex-row justify-content-center tache" *ngIf="tache.statut == status && tache.user == this.user">
-    <input (click)="modifier(tache)" type="checkbox" [(ngModel)]="tache.termine">
-    <div [ngClass]="tache.termine? 'text-decoration-line-through' : '' ">{{tache.titre}}</div>
-    <button class="btn btn-outline-danger m-1" (click)='supprimer(tache)'>Supprimer</button>
 </div>
-</div>
-

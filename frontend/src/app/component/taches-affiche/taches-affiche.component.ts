@@ -1,3 +1,4 @@
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Tache } from 'src/app/model/tache';
@@ -21,6 +22,7 @@ export class TachesAfficheComponent {
 
   user:string = ''
   taches: Array<Tache> = [];
+  statut: Array<Status> = [];
 
   newTache: Tache = {
     titre : '',
@@ -40,6 +42,7 @@ export class TachesAfficheComponent {
           this.taches.push(data);
         }
       });
+    this.newTache.titre = '';
 
   }
 
@@ -54,7 +57,10 @@ export class TachesAfficheComponent {
       next: (data:string) => { this.user = data; }
     });
 
-
+    this.tacheService.getStatus().subscribe({
+      next: (data:Array<Status>) => { this.statut = data; }
+    
+    }); 
   }  
 
 
@@ -74,6 +80,77 @@ export class TachesAfficheComponent {
       }
     });
   }
+
+
+  down(tache:Tache){
+    console.log(this.statut)
+    for(let i = 0;i<this.statut.length;i++)
+    {
+      if(tache.statut == this.statut[i].status){
+        let j = i+1;
+        for(j;j<this.statut.length;j++)
+        {
+          if(tache.user == this.statut[j].user)
+          {
+            console.log(this.statut[j].status)
+            tache.statut = this.statut[j].status
+            this.tacheService.updateTaches(tache).subscribe({
+              next: (data) => {
+                this.tacheService.getTaches().subscribe({
+                  next: (data:Array<Tache>) => { this.taches = data; }
+                });
+              }
+            });     
+            location.reload();
+            return
+          }
+        }
+      }
+    }
+  }
+
+  up(tache:Tache){
+    for(let i = 0;i<this.statut.length;i++)
+    {
+      if(tache.statut == this.statut[i].status){
+        let j = i-1;
+        for(j;j<this.statut.length;j--)
+        {
+          if(tache.user == this.statut[j].user)
+          {
+            tache.statut = this.statut[j].status
+            this.tacheService.updateTaches(tache).subscribe({
+              next: (data) => {
+                this.tacheService.getTaches().subscribe({
+                  next: (data:Array<Tache>) => { this.taches = data; }
+                });
+              }
+            });  
+            location.reload();
+            return
+          }
+        }
+      }
+    }
+    
+  }
+
+  drop(event: CdkDragDrop<Tache[]>) {
+    console.log(event);
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      console.log(event)
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+      );
+      console.log(event)
+    }
+  }
+  
 }
 
 

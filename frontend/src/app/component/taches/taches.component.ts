@@ -6,6 +6,7 @@ import { TachesService } from 'src/app/service/taches.service';
 import { UserService } from 'src/app/service/user.service';
 import {LoginComponent} from 'src/app/component/login/login.component'
 import { User } from 'src/app/model/user';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-taches',
@@ -50,7 +51,7 @@ export class TachesComponent  {
 
     this.userService.LogUser().subscribe({
       next: (data:string) => { this.user = data; }
-    });
+    });  
   }
 
 
@@ -89,6 +90,7 @@ export class TachesComponent  {
           this.statut.push(data);
         }
       });
+      this.newStatus.status = '';
   }
 
   constructor(private tacheService: TachesService,
@@ -108,6 +110,22 @@ export class TachesComponent  {
     this.filter = filter;
   }
 
+  drop(event: CdkDragDrop<Tache[]>) {
+    console.log(event);
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      console.log("test")
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+      );
+      console.log("test 2")
+    }
+  }
+  
 
 }
 

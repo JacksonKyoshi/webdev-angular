@@ -5,6 +5,8 @@
         grid-auto-rows: minmax(15px, auto);
         border: solid;
         border-radius: 10px;
+        background-color: white;
 
     
 }
+

@@ -1,26 +1,38 @@
 <div class="container-fluid d-flex justify-content-center">
     <div class="d-flex flex-column">
         <div class="bd-highlight d-flex justify-content-center">
+            <p class="invisible">ppppppppp))fâ"ijfâ"rifppppppppppppppppp</p>
             <h1>Taches</h1>
-            
+            <p class="invisible">pppppppppppppppppppppppppp</p>
+
             <button class="btn btn-outline-secondary m-1" (click)="loggout()">Logout</button>
 
         </div>
-        <h2 class="bd-highlight d-flex justify-content-center">{{this.user}}</h2>
+        <br />
+        <h2 class="bd-highlight d-flex justify-content-center border border-dark rounded">Utilisateur : {{this.user}}
+        </h2>
+        <br />
+        <br />
         <div class="ajout">
 
 
             <div *ngFor="let status of statut" class="d-flex flex-row justify-content-center">
-                <div *ngIf="status.user == this.user">
+                <div *ngIf="status.user == this.user" cdkDropListGroup>
                     <app-taches-affiche status="{{status.status}}"></app-taches-affiche>
+                    <br />
                     <button id="buttonAjoutTacheIndef" class="btn btn-danger" value="Supprimer"
-                        (click)='supprimerList(status)'>suprimer</button>
+                        (click)='supprimerList(status)'>supprimer</button>
+                    <br />
+                    <br />
+                    <br />
                 </div>
+
             </div>
+            <br />
         </div>
 
 
-        <div class="d-flex flex-row justify-content-center "> <!--indéfinie-->
+        <div class="d-flex flex-row justify-content-center"> 
 
             <input id="inputAjoutTacheIndef" class="saisieInput" type="text" name="tacheIndef" placeholder="tache"
                 [(ngModel)]="newStatus.status">

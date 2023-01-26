@@ -11,6 +11,7 @@ import { FiltreTachePipe } from './pipe/filtre-tache.pipe';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { TachesAfficheComponent } from './component/taches-affiche/taches-affiche.component';
 import { RegisterComponent } from './component/register/register.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { RegisterComponent } from './component/register/register.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    DragDropModule
+    DragDropModule,
+    FontAwesomeModule
  ],
   providers: [],
   bootstrap: [AppComponent]
