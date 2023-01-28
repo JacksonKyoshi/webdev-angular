@@ -27,3 +27,6 @@ Ce faisant, l'utilisateur peut maintenant ajouter des tâches dans ses listes de
 
 4) Logout :
 L'utilisateur peut se logout de la to-do-list à l'aide du bouton éponyme, il sera donc renvoyé sur la page logout.
+
+5) mot de passe oublié : (ajouté après présentation)
+L'utilisateur peut cliquer sur mot de passe oublé dans la page login, où il sera invité à rentrer son nom d'utilisateur afin de lui envoyer son mot de passe.

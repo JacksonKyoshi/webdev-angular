@@ -12,6 +12,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { TachesAfficheComponent } from './component/taches-affiche/taches-affiche.component';
 import { RegisterComponent } from './component/register/register.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MdpOublieComponent } from './component/mdp-oublie/mdp-oublie.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     TachesComponent,
     FiltreTachePipe,
     TachesAfficheComponent,
-    RegisterComponent
+    RegisterComponent,
+    MdpOublieComponent
   ],
   imports: [
     BrowserModule,

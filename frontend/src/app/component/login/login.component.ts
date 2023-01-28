@@ -28,6 +28,10 @@ export class LoginComponent {
     this.router.navigate(['register'])
   }
 
+  oublie():void{
+    this.router.navigate(['oublie'])
+  }
+
   
 
 }

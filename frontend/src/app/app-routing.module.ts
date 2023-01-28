@@ -4,6 +4,7 @@ import { LoginComponent } from './component/login/login.component';
 import { TachesComponent } from './component/taches/taches.component';
 import {RegisterComponent} from './component/register/register.component'
 import { IsSignedInGuard } from './is-signed-in.guard';
+import { MdpOublieComponent } from './component/mdp-oublie/mdp-oublie.component';
 
 const routes: Routes = [
   {
@@ -19,7 +20,10 @@ const routes: Routes = [
   {
     path:'register',
     component: RegisterComponent,
-
+  },
+  {
+    path:'oublie',
+    component: MdpOublieComponent,
   }
 ];
 
